@@ -7,3 +7,4 @@ class Config:
     PORT = 3000
     SLACK_COMMANDS_CHANNEL = 'C03AVAK00LA'
     SLACK_TELEMETRY_CHANNEL = 'C03AXMGQPEY'
+    CLONE_NAME = 'git-all-secrets'
