@@ -4,9 +4,16 @@ from slack_bolt import App
 from .functions import *
 
 
+# import subprocess
+# process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+# process.wait()
+# print process.returncode
+
+
 app = App(token=Config.SLACK_BOT_TOKEN,
           signing_secret=Config.SLACK_SIGNING_SECRET)
 
+#//TODO: execute the command and send updates to output
 
 @app.event("app_mention")  # that's how the app will recieve commands
 def recieve_command(event, say):  # , say):
@@ -14,8 +21,8 @@ def recieve_command(event, say):  # , say):
         event['blocks'][0]['elements'][0]['elements'][1]['text'])
     executable = 'sudo docker run --rm -it abhartiya/tools_gitallsecrets'
     command = command_builder(executable, **command_options)
-    response = 'executing: ' + command
-    say(text=response, channel=Config.SLACK_SEND_CHANNEL)
+    response = 'executing: ' + "```" + command + "```"
+    say(text=response, channel=Config.SLACK_COMMANDS_CHANNEL)
     say(text=response, channel=Config.SLACK_TELEMETRY_CHANNEL)
 
 
