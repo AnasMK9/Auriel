@@ -16,3 +16,4 @@ def decode_message(message: str):
         else:
             dict_args[arg[0]] = None
     return dict_args
+

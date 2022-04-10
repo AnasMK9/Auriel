@@ -1,8 +1,7 @@
-from http.server import executable
 from .config import Config
 from slack_bolt import App
 from .functions import *
-
+from .block_builder import BlockBuilder
 
 app = App(token=Config.SLACK_BOT_TOKEN,
           signing_secret=Config.SLACK_SIGNING_SECRET)
@@ -20,10 +19,11 @@ def recieve_command(event, say):  # , say):
         event['blocks'][0]['elements'][0]['elements'][1]['text'])
     executable = 'sudo docker run --rm -it abhartiya/tools_gitallsecrets'
     command = command_builder(executable, **command_options)
-    response = 'executing: ' + "```" + command + "```"
-    say(text='*_'+Config.CLONE_NAME+'_*\\n'+response,
+    response =BlockBuilder.command_response_block(action='executing', command=command)
+    update = BlockBuilder.command_update_block(action='executing',command=command)
+    say(blocks=response,
         channel=Config.SLACK_COMMANDS_CHANNEL)
-    say(text=response, channel=Config.SLACK_TELEMETRY_CHANNEL)
+    say(blocks=update, channel=Config.SLACK_TELEMETRY_CHANNEL)
 
 
 if __name__ == '__main__':
