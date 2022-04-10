@@ -7,19 +7,19 @@ class BlockBuilder:
 
     @classmethod
     def command_response_block(cls, action: str, command: str):
-        block =  [
+        block = [
             {
                 "type": "section",
-                        "text": [{
-                            "type": "mrkdwn",
-                            "text": "*"+cls.actions.get(action)+"*"
-                        }]
+                "fields": [{
+                    "type": "mrkdwn",
+                    "text": "*"+cls.actions.get(action)+"*"
+                }]
             }, {
                 "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": "```"+command+"```"
-                        }
+                "fields": {
+                    "type": "mrkdwn",
+                    "text": "```"+command+"```"
+                }
             }]
         return block
 
