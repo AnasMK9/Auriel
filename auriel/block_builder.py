@@ -29,8 +29,8 @@ class BlockBuilder:
         block.insert(0, {
             "type": "header",
             "text": {
-                "type": "mrkdwn",
-                "text": "_"+Config.CLONE_NAME+"_",
+                "type": "plain_text",
+                "text": Config.CLONE_NAME,
             }
         })
         return block

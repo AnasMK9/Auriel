@@ -25,8 +25,6 @@ def recieve_command(event, say):  # , say):
         action='executing', command=command)
     say(blocks=response,
         channel=Config.SLACK_COMMANDS_CHANNEL, text='',)
-    print(update)
-    print(response)
     say(blocks=update, channel=Config.SLACK_TELEMETRY_CHANNEL, text='')
 
 
