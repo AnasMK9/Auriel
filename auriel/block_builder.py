@@ -7,7 +7,7 @@ class BlockBuilder:
 
     @classmethod
     def command_response_block(cls, action: str, command: str):
-        block = {'blocks': [
+        block =[ {'blocks': [
             {
                 "type": "section",
                 "text": {
@@ -20,13 +20,13 @@ class BlockBuilder:
                     "type": "mrkdwn",
                     "text": "```"+command+"```"
                 }
-            }]}
+            }]}]
         return block
 
     @classmethod
     def command_update_block(cls, action: str, command: str):
         block = cls.command_response_block(action, command)
-        block['blocks'].insert(0, {
+        block[0]['blocks'].insert(0, {
             "type": "header",
             "text": {
                 "type": "plain_text",
