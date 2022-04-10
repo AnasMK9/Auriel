@@ -19,11 +19,13 @@ def recieve_command(event, say):  # , say):
         event['blocks'][0]['elements'][0]['elements'][1]['text'])
     executable = 'sudo docker run --rm -it abhartiya/tools_gitallsecrets'
     command = command_builder(executable, **command_options)
-    response =BlockBuilder.command_response_block(action='executing', command=command)
-    update = BlockBuilder.command_update_block(action='executing',command=command)
+    response = BlockBuilder.command_response_block(
+        action='executing', command=command)
+    update = BlockBuilder.command_update_block(
+        action='executing', command=command)
     say(blocks=response,
-        channel=Config.SLACK_COMMANDS_CHANNEL)
-    say(blocks=update, channel=Config.SLACK_TELEMETRY_CHANNEL)
+        channel=Config.SLACK_COMMANDS_CHANNEL, text='',)
+    say(blocks=update, channel=Config.SLACK_TELEMETRY_CHANNEL, text='')
 
 
 if __name__ == '__main__':

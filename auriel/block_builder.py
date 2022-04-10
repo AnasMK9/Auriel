@@ -27,7 +27,7 @@ class BlockBuilder:
     def command_update_block(cls, action: str, command: str):
         block = cls.command_response_block(action, command)
         block[0]['text'].insert(0, {
-            "type": "mrkdwn",
-            "text": "*_"+Config.CLONE_NAME+"_*"
+            "type": "header",
+            "text": Config.CLONE_NAME
         })
         return block
