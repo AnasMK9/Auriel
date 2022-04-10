@@ -10,13 +10,13 @@ class BlockBuilder:
         block = {'blocks': [
             {
                 "type": "section",
-                "fields": [{
+                "text": {
                     "type": "mrkdwn",
                     "text": "*"+cls.actions.get(action)+"*"
-                }]
+                }
             }, {
                 "type": "section",
-                "fields": {
+                "text": {
                     "type": "mrkdwn",
                     "text": "```"+command+"```"
                 }
