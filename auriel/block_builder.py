@@ -1,4 +1,4 @@
-from .config import Config
+# from .config import Config
 
 
 class BlockBuilder:
@@ -7,30 +7,30 @@ class BlockBuilder:
 
     @classmethod
     def command_response_block(cls, action: str, command: str):
-        block =[ #[ {'blocks': 
+        block = [
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*"+cls.actions.get(action)+"*"
+                    "text": f"*{cls.actions.get(action)}*"
                 }
             }, {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "```"+command+"```"
+                    "text": f"```{command}```"
                 }
-            }]#}]
+            }]
         return block
 
     @classmethod
-    def command_update_block(cls, action: str, command: str):
+    def command_update_block(cls, action: str, command: str, task_name: str):
         block = cls.command_response_block(action, command)
         block.insert(0, {
             "type": "header",
             "text": {
                 "type": "plain_text",
-                "text": Config.CLONE_NAME,
+                "text": task_name,
             }
         })
         return block
