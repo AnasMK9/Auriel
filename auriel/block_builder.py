@@ -26,7 +26,7 @@ class BlockBuilder:
     @classmethod
     def command_update_block(cls, action: str, command: str):
         block = cls.command_response_block(action, command)
-        block[0]['text'].insert(0, {
+        block[0]['fields'].insert(0, {
             "type": "header",
             "text": Config.CLONE_NAME
         })
