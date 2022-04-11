@@ -1,6 +1,6 @@
-from ..router import BaseRoute
+from auriel.router import BaseRoute
 from slack_bolt.context.say.say import Say
-from ..block_builder import BlockBuilder
+from auriel.block_builder import BlockBuilder
 
 
 class GitAllSecretsRoute(BaseRoute):
@@ -16,7 +16,6 @@ class GitAllSecretsRoute(BaseRoute):
 
     def run(self):
         self.build_command()
-        
         self.send_response('executing')
         self.send_update('executing')
         self.send_update('success')
